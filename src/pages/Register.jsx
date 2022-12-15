@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { signup } from "../utils/api";
+import { useState } from "react";
 
 const Register = () => {
     const [loading, setLoading] = useState();

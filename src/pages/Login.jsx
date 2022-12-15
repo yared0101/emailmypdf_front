@@ -3,15 +3,16 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { login } from "../utils/api";
 import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
 
 const Login = () => {
     /**
      *
      * @param {React.FormEvent<HTMLFormElement>} e
      */
+    const [loading, setLoading] = useState();
     const loginFunc = (e) => {
         e.preventDefault();
-        const [loading, setLoading] = useState();
         setLoading(true);
 
         login(
