@@ -1,6 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import { login } from "../utils/api";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
     /**
@@ -8,9 +10,18 @@ const Login = () => {
      * @param {React.FormEvent<HTMLFormElement>} e
      */
     const loginFunc = (e) => {
-        // localStorage.setItem("accessToken", "somekey");
         e.preventDefault();
-        console.log(e.target.elements.email.value);
+        login(
+            e.target.elements.email.value,
+            e.target.elements.password.value
+        ).then((data) => {
+            if (typeof data === "string") {
+                return toast.error(data, { autoClose: 2000 });
+            }
+            toast.success("Succesfully logged in", { autoClose: 2000 });
+            localStorage.setItem("accessToken", data.data.accessToken);
+            document.location.reload();
+        });
     };
     return (
         <div className="border p-5" style={{ width: "40%" }}>
@@ -22,6 +33,7 @@ const Login = () => {
                         type="email"
                         placeholder="Enter email"
                         name="email"
+                        required
                     />
                 </Form.Group>
 
@@ -31,15 +43,17 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         name="password"
+                        required
                     />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Group className="mb-3" controlId="formBasicLink">
                     <Link to={`/register`}>dont have an account?</Link>
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button variant="primary" type="submit" size="lg">
+                    Login
                 </Button>
             </Form>
+            <ToastContainer autoClose={2000} />
         </div>
     );
 };
