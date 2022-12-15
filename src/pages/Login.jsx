@@ -11,10 +11,14 @@ const Login = () => {
      */
     const loginFunc = (e) => {
         e.preventDefault();
+        const [loading, setLoading] = useState();
+        setLoading(true);
+
         login(
             e.target.elements.email.value,
             e.target.elements.password.value
         ).then((data) => {
+            setLoading(false);
             if (typeof data === "string") {
                 return toast.error(data, { autoClose: 2000 });
             }
@@ -49,7 +53,12 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicLink">
                     <Link to={`/register`}>dont have an account?</Link>
                 </Form.Group>
-                <Button variant="primary" type="submit" size="lg">
+                <Button
+                    variant="primary"
+                    type="submit"
+                    disabled={loading}
+                    size="lg"
+                >
                     Login
                 </Button>
             </Form>

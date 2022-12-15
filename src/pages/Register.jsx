@@ -5,12 +5,15 @@ import { ToastContainer, toast } from "react-toastify";
 import { signup } from "../utils/api";
 
 const Register = () => {
+    const [loading, setLoading] = useState();
     const registerFunc = (e) => {
         e.preventDefault();
+        setLoading(true);
         signup(
             e.target.elements.email.value,
             e.target.elements.password.value
         ).then((data) => {
+            setLoading(false);
             if (typeof data === "string") {
                 return toast.error(data, { autoClose: 2000 });
             }
@@ -43,7 +46,7 @@ const Register = () => {
                 <Form.Group className="mb-3" controlId="formBasicLink">
                     <Link to={`/`}>already registered?</Link>
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" disabled={loading}>
                     Register
                 </Button>
             </Form>
