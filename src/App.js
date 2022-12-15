@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Main from "./layouts.js/Main";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Settings from "./pages/Settings";
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: localStorage.getItem("accessToken") ? <Settings /> : <Login />,
+    },
+    {
+        path: "/register",
+        element: localStorage.getItem("accessToken") ? (
+            <Settings />
+        ) : (
+            <Register />
+        ),
+    },
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Main>
+                <RouterProvider router={router} />
+            </Main>
+        </div>
+    );
 }
 
 export default App;
