@@ -29,7 +29,7 @@ const Login = () => {
         });
     };
     return (
-        <div className="border p-5" style={{ width: "40%" }}>
+        <div className="border p-5" style={{ minWidth: "40%" }}>
             <h1 className="mb-5">Login</h1>
             <Form onSubmit={(e) => loginFunc(e)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

@@ -24,7 +24,7 @@ const Register = () => {
         });
     };
     return (
-        <div className="border p-5" style={{ width: "40%" }}>
+        <div className="border p-5" style={{ minWidth: "40%" }}>
             <h1 className="mb-5">Register</h1>
             <Form onSubmit={(e) => registerFunc(e)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

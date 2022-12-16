@@ -109,7 +109,7 @@ const Settings = () => {
         });
     };
     return (
-        <div className="border p-5" style={{ width: "40%" }}>
+        <div className="border p-5" style={{ minWidth: "40%" }}>
             <div className="d-flex justify-content-between align-items-center mb-5">
                 <h1>Settings</h1>
                 <img
