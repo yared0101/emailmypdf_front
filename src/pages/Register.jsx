@@ -20,7 +20,7 @@ const Register = () => {
             }
             toast.success("Succesfully registered", { autoClose: 2000 });
             localStorage.setItem("accessToken", data.data.accessToken);
-            document.location.reload();
+            window.open("/", "_self");
         });
     };
     return (

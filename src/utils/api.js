@@ -1,7 +1,7 @@
 import {
     axiosAuthenticatedFormInstance,
     axiosAuthenticatedInstance,
-    axiosInstance,
+    axiosInstance,OIUYTYUIOP
 } from "../config";
 export const getBoards = () => {
     return axiosAuthenticatedInstance()

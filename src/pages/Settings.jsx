@@ -155,15 +155,18 @@ const Settings = () => {
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3">
                 {(logo || emailSettings?.logo) && (
-                    <Form.Label>Current chosen logo:</Form.Label>
+                    <>
+                        <Form.Label>Current chosen logo:</Form.Label>
+                        <br />
+
+                        <img
+                            style={{ maxWidth: "100px", maxHeight: "100px" }}
+                            id="target"
+                            src={logo || emailSettings?.logo}
+                            alt="logo"
+                        />
+                    </>
                 )}
-                <br />
-                <img
-                    style={{ maxWidth: "100px", maxHeight: "100px" }}
-                    id="target"
-                    src={logo || emailSettings?.logo}
-                    alt="logo"
-                />
                 <br />
                 <Form.Label>Upload Logo</Form.Label>
                 <Form.Control
